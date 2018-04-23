@@ -3,6 +3,7 @@
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_3_Core>
+#include <QOpenGLShaderProgram>
 
 class GLView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
 {
@@ -18,7 +19,8 @@ protected:
 	void resizeGL(int w, int h) override;
 
 private:
-	
+	QOpenGLShaderProgram m_program;
+	QVector3D m_vertex[3];
 };
 
 #endif // GLVIEW_H

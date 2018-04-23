@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="MainWindow">
+    <qresource prefix="/shader">
+        <file alias="triangle/vertex">Shaders/triangle.vertex.shader</file>
+        <file alias="triangle/fragment">Shaders/triangle.fragment.shader</file>
     </qresource>
 </RCC>
