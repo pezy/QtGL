@@ -3,7 +3,8 @@
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions_3_3_Core>
-#include <QOpenGLShaderProgram>
+
+class GLItem;
 
 class GLView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core
 {
@@ -13,14 +14,15 @@ public:
 	GLView(QWidget *parent = Q_NULLPTR);
 	~GLView();
 
+	void AddItem(GLItem *);
+
 protected:
 	void initializeGL() override;
 	void paintGL() override;
 	void resizeGL(int w, int h) override;
 
 private:
-	QOpenGLShaderProgram m_program;
-	QVector3D m_vertex[3];
+	std::vector<GLItem*> m_items;
 };
 
 #endif // GLVIEW_H
