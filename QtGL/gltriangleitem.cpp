@@ -20,10 +20,6 @@ void GLTriangleItem::InitializeGL()
 	m_program.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shader/triangle/vertex");
 	m_program.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/shader/triangle/fragment");
 	m_program.link();
-
-	m_vertex[0] = QVector3D(-0.5f, -0.5f, 0.0f);
-	m_vertex[1] = QVector3D(0.5f, -0.5f, 0.0f);
-	m_vertex[2] = QVector3D(0.0f, 0.5f, 0.0f);
 }
 
 void GLTriangleItem::Draw()
@@ -34,4 +30,11 @@ void GLTriangleItem::Draw()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	m_program.disableAttributeArray("aPos");
 	m_program.release();
+}
+
+void GLTriangleItem::SetVertex(const QVector3D(&vertex)[3])
+{
+	m_vertex[0] = vertex[0];
+	m_vertex[1] = vertex[1];
+	m_vertex[2] = vertex[2];
 }

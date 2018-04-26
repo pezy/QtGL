@@ -65,6 +65,9 @@
     <ClCompile Include="gltriangleitem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gltrianglemeshitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -88,6 +91,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gltriangleitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gltrianglemeshitem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

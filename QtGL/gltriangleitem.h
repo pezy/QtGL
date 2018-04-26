@@ -13,6 +13,7 @@ public:
 
 	void InitializeGL();
 	void Draw();
+	void SetVertex(const QVector3D(&vertex)[3]);
 
 private:
 	QOpenGLShaderProgram m_program;
