@@ -11,7 +11,7 @@ public:
 	GLTriangleMeshItem();
 	~GLTriangleMeshItem();
 
-	void InitializeGL() override;
+	void InitializeGL(QOpenGLWidget* pGLWidget) override;
 	void Draw() override;
 
 private:

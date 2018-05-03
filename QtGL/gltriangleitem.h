@@ -11,8 +11,8 @@ public:
 	GLTriangleItem();
 	~GLTriangleItem();
 
-	void InitializeGL();
-	void Draw();
+	void InitializeGL(QOpenGLWidget* pGLWidget) override;
+	void Draw() override;
 	void SetVertex(const QVector3D(&vertex)[3]);
 
 private:

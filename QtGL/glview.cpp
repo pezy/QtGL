@@ -19,15 +19,19 @@ GLView::~GLView()
 void GLView::AddItem(GLItem *pItem)
 {
 	m_items.push_back(pItem);
+	update();
+}
+
+void GLView::DelItem(GLItem *pItem)
+{
+	m_items.remove(pItem);
+	update();
 }
 
 void GLView::initializeGL()
 {
 	initializeOpenGLFunctions();
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-
-	for (auto pItem : m_items)
-		pItem->InitializeGL();
 }
 
 void GLView::paintGL()

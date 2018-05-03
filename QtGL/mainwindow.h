@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_mainwindow.h"
+#include "itemtree.h"
 
 class MainWindow : public QMainWindow
 {
@@ -13,7 +14,11 @@ public:
 	~MainWindow();
 
 private:
+	void treeStatusChanged(QTreeWidgetItem* pItem, int column);
+
+private:
 	Ui::MainWindowClass ui;
+	ItemTree m_tree;
 };
 
 #endif // MAINWINDOW_H

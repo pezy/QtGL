@@ -1,4 +1,5 @@
 #include "gltrianglemeshitem.h"
+#include <QOpenGLWidget>
 
 GLTriangleMeshItem::GLTriangleMeshItem()
 	: GLItem(), m_ebo(QOpenGLBuffer::IndexBuffer)
@@ -12,8 +13,9 @@ GLTriangleMeshItem::~GLTriangleMeshItem()
 	m_ebo.destroy();
 }
 
-void GLTriangleMeshItem::InitializeGL()
+void GLTriangleMeshItem::InitializeGL(QOpenGLWidget* pGLWidget)
 {
+	pGLWidget->makeCurrent();
 	initializeOpenGLFunctions();
 
 	m_program.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shader/triangle/vertex");
@@ -42,6 +44,8 @@ void GLTriangleMeshItem::InitializeGL()
 	m_ebo.setUsagePattern(QOpenGLBuffer::StaticDraw);
 	m_ebo.bind();
 	m_ebo.allocate(indices, 6 * sizeof(GLushort));
+
+	pGLWidget->doneCurrent();
 }
 
 void GLTriangleMeshItem::Draw()
@@ -56,5 +60,8 @@ void GLTriangleMeshItem::Draw()
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	m_program.disableAttributeArray("aPos");
+
+	m_ebo.release();
+	m_vbo.release();
 	m_program.release();
 }

@@ -13,13 +13,15 @@ GLTriangleItem::~GLTriangleItem()
 	
 }
 
-void GLTriangleItem::InitializeGL()
+void GLTriangleItem::InitializeGL(QOpenGLWidget* pGLWidget)
 {
+	pGLWidget->makeCurrent();
 	initializeOpenGLFunctions();
 
 	m_program.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shader/triangle/vertex");
 	m_program.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/shader/triangle/fragment");
 	m_program.link();
+	pGLWidget->doneCurrent();
 }
 
 void GLTriangleItem::Draw()

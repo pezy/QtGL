@@ -1,5 +1,6 @@
 #include "mainwindow.h"
-#include "gltriangleitem.h"
+
+#include <QVector3D>
 #include "gltrianglemeshitem.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -7,20 +8,26 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	/*QVector3D vertex1[3] = { QVector3D(0.5f, 0.5f, 0.0f), QVector3D(0.5f, -0.5f, 0.0f), QVector3D(-0.5f, 0.5f, 0.0f) };
-	auto pTriangle1 = new GLTriangleItem;
-	pTriangle1->SetVertex(vertex1);
-	ui.openGLWidget->AddItem(pTriangle1);
+	connect(ui.treeWidget, &QTreeWidget::itemChanged, this, &MainWindow::treeStatusChanged);
 
-	QVector3D vertex2[3] = { QVector3D(0.5f, -0.5f, 0.0f), QVector3D(-0.5f, -0.5f, 0.0f), QVector3D(-0.5f, 0.5f, 0.0f) };
-	auto pTriangle2 = new GLTriangleItem;
-	pTriangle2->SetVertex(vertex2);
-	ui.openGLWidget->AddItem(pTriangle2);*/
-
-	ui.openGLWidget->AddItem(new GLTriangleMeshItem);
+	m_tree.Init(*ui.treeWidget);
 }
 
 MainWindow::~MainWindow()
 {
 
+}
+
+void MainWindow::treeStatusChanged(QTreeWidgetItem* pItem, int column)
+{
+	GLItem* pGLItem = m_tree.GetOrCreateGLItem(pItem, ui.openGLWidget);
+
+	if (pItem->checkState(column) == Qt::Checked)
+	{
+		ui.openGLWidget->AddItem(pGLItem);
+	}
+	else
+	{
+		ui.openGLWidget->DelItem(pGLItem);
+	}
 }

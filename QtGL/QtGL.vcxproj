@@ -166,6 +166,8 @@
     <ClCompile Include="gltriangleitem.cpp" />
     <ClCompile Include="gltrianglemeshitem.cpp" />
     <ClCompile Include="glview.cpp" />
+    <ClCompile Include="itemfactory.cpp" />
+    <ClCompile Include="itemtree.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
   </ItemGroup>
@@ -214,6 +216,8 @@
     <ClInclude Include="glitem.h" />
     <ClInclude Include="gltriangleitem.h" />
     <ClInclude Include="gltrianglemeshitem.h" />
+    <ClInclude Include="itemfactory.h" />
+    <ClInclude Include="itemtree.h" />
     <CustomBuild Include="glview.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing glview.h...</Message>

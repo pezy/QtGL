@@ -15,6 +15,7 @@ public:
 	~GLView();
 
 	void AddItem(GLItem *);
+	void DelItem(GLItem *);
 
 protected:
 	void initializeGL() override;
@@ -22,7 +23,7 @@ protected:
 	void resizeGL(int w, int h) override;
 
 private:
-	std::vector<GLItem*> m_items;
+	std::list<GLItem*> m_items;
 };
 
 #endif // GLVIEW_H
